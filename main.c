@@ -1,19 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main() {
-    int linhas, colunas;
-
-    scanf("%d %d", &linhas, &colunas);
-
-    if (linhas == 0 || colunas == 0) {
+void alocaMatriz(int linhas, int colunas) {
+    if (linhas == 0) {
         printf("[matriz vazia]\n");
-        return 0;
+        return;
     }
 
-    int** matriz = (int**)malloc(linhas * sizeof(int*));
+    int **matriz = (int **)malloc(linhas * sizeof(int *));
     for (int i = 0; i < linhas; i++) {
-        matriz[i] = (int*)malloc(colunas * sizeof(int));
+        matriz[i] = (int *)malloc(colunas * sizeof(int));
     }
 
     for (int i = 0; i < linhas; i++) {
@@ -24,7 +20,10 @@ int main() {
 
     for (int i = 0; i < linhas; i++) {
         for (int j = 0; j < colunas; j++) {
-            printf("%d ", matriz[i][j]);
+            if (j != 0) {
+                printf(" ");
+            }
+            printf("%d", matriz[i][j]);
         }
         printf("\n");
     }
@@ -33,6 +32,11 @@ int main() {
         free(matriz[i]);
     }
     free(matriz);
+}
 
+int main() {
+    int linhas, colunas;
+    scanf("%d %d", &linhas, &colunas);
+    alocaMatriz(linhas, colunas);
     return 0;
 }
