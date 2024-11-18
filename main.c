@@ -1,11 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void alocaMatriz(int linhas, int colunas) {
+int main() {
+    int linhas, colunas;
+    scanf("%d", &linhas);
+
     if (linhas == 0) {
         printf("[matriz vazia]\n");
-        return;
+        return 0;
     }
+
+    scanf("%d", &colunas);
 
     int **matriz = (int **)malloc(linhas * sizeof(int *));
     for (int i = 0; i < linhas; i++) {
@@ -32,11 +37,6 @@ void alocaMatriz(int linhas, int colunas) {
         free(matriz[i]);
     }
     free(matriz);
-}
 
-int main() {
-    int linhas, colunas;
-    scanf("%d %d", &linhas, &colunas);
-    alocaMatriz(linhas, colunas);
     return 0;
 }
