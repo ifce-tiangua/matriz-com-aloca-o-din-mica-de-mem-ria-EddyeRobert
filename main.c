@@ -30,7 +30,7 @@ int main() {
             }
         }
         if (i != linhas - 1) {
-            printf("\\n");
+            printf("\n");
         }
     }
 
